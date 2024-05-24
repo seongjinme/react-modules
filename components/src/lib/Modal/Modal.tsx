@@ -12,7 +12,6 @@ import type {
 } from '../types/ModalTypes';
 
 import * as Styled from './Modal.style';
-import useBodyOverflow from '../hooks/useBodyOverflow';
 
 export interface ModalProps {
   isOpen: boolean;
@@ -46,7 +45,17 @@ export default function Modal({
 }: React.PropsWithChildren<ModalProps>) {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  useBodyOverflow(isOpen);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen && modalRef) {
