@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import './App.css';
 
-import {
-  Modal,
-  AlertModal,
-  ConfirmModal,
-  PromptModal,
-  ButtonInterface,
-} from '@seongjinme/react-modal';
+// import {
+//   Modal,
+//   AlertModal,
+//   ConfirmModal,
+//   PromptModal,
+//   ButtonInterface,
+// } from '@seongjinme/react-modal';
+
+import { Modal, AlertModal, ConfirmModal, PromptModal, ButtonInterface } from './lib';
 
 function App() {
   const [isOpenAlertModal, setIsOpenAlertModal] = useState(false);

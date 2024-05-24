@@ -12,11 +12,13 @@ import type {
 } from '../types/ModalTypes';
 
 import * as Styled from './Modal.style';
+import useBodyOverflow from '../hooks/useBodyOverflow';
 
 export interface ModalProps {
   isOpen: boolean;
   title: string;
   size?: ModalSizeType;
+  width?: string;
   position?: ModalPositionType;
   hasCloseButton?: boolean;
   isClosableOnClickBackdrop?: boolean;
@@ -32,6 +34,7 @@ export default function Modal({
   title,
   children,
   size = 'medium',
+  width,
   position = 'center',
   hasCloseButton = true,
   isClosableOnClickBackdrop = true,
@@ -42,6 +45,8 @@ export default function Modal({
   onClose,
 }: React.PropsWithChildren<ModalProps>) {
   const modalRef = useRef<HTMLDivElement>(null);
+
+  useBodyOverflow(isOpen);
 
   useEffect(() => {
     if (isOpen && modalRef) {
@@ -69,32 +74,33 @@ export default function Modal({
         $zIndex={zIndex.backdrop}
         $opacity={backdropOpacity}
         onClick={handleClickBackdrop}
-      />
-
-      <Styled.ModalWrapper
-        ref={modalRef}
-        $position={position}
-        $size={size}
-        $zIndex={zIndex.modal}
-        onKeyDown={handleKeyDown}
-        onClick={(event) => event.stopPropagation()}
-        tabIndex={0}
       >
-        <ModalHeader
-          title={title}
-          hasCloseButton={hasCloseButton}
-          onClose={onClose}
-        />
-
-        {children && <ModalContent>{children}</ModalContent>}
-
-        {buttons && (
-          <ModalFooter
-            buttons={buttons}
-            buttonsFlexDirection={buttonsFlexDirection}
+        <Styled.ModalWrapper
+          ref={modalRef}
+          $position={position}
+          $size={size}
+          $width={width}
+          $zIndex={zIndex.modal}
+          onKeyDown={handleKeyDown}
+          onClick={(event) => event.stopPropagation()}
+          tabIndex={0}
+        >
+          <ModalHeader
+            title={title}
+            hasCloseButton={hasCloseButton}
+            onClose={onClose}
           />
-        )}
-      </Styled.ModalWrapper>
+
+          {children && <ModalContent>{children}</ModalContent>}
+
+          {buttons && (
+            <ModalFooter
+              buttons={buttons}
+              buttonsFlexDirection={buttonsFlexDirection}
+            />
+          )}
+        </Styled.ModalWrapper>
+      </Styled.ModalBackdrop>
     </Styled.ModalPositioner>
   );
 }

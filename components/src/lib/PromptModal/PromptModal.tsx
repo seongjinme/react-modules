@@ -22,6 +22,7 @@ export interface PromptModalProps extends ModalProps {
 export default function PromptModal({
   isOpen,
   size,
+  width,
   title,
   inputField,
   submitButtonText = '확인',
@@ -58,6 +59,7 @@ export default function PromptModal({
     <Modal
       isOpen={isOpen}
       size={size}
+      width={width}
       title={title}
       onClose={onClose}
       buttons={[submitButton, cancelButton]}

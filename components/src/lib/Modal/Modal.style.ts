@@ -18,8 +18,7 @@ export const ModalBackdrop = styled.div<{
   position: fixed;
   width: 100%;
   height: 100%;
-  background: ${COLORS.grey800};
-  opacity: ${(props) => props.$opacity};
+  background: ${(props) => `rgb(0 0 0 / ${props.$opacity})`};
   z-index: ${(props) => props.$zIndex};
 
   display: flex;
@@ -31,6 +30,7 @@ export const ModalBackdrop = styled.div<{
 export const ModalWrapper = styled.div<{
   $position: ModalPositionType;
   $size: ModalSizeType;
+  $width?: string;
   $zIndex: number;
 }>`
   background: ${COLORS.grey100};
@@ -41,7 +41,7 @@ export const ModalWrapper = styled.div<{
   flex-direction: column;
   gap: 16px;
 
-  width: ${(props) => MODAL_SIZE[props.$size]};
+  width: ${(props) => props.$width ?? MODAL_SIZE[props.$size]};
   z-index: ${(props) => props.$zIndex};
 
   ${(props) => {

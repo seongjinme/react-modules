@@ -9,6 +9,7 @@ export interface AlertModalProps extends ModalProps {
 export default function AlertModal({
   isOpen,
   size,
+  width,
   title,
   children,
   confirmButtonText = '확인',
@@ -31,6 +32,7 @@ export default function AlertModal({
     <Modal
       isOpen={isOpen}
       size={size}
+      width={width}
       title={title}
       onClose={onClose}
       buttons={[confirmButton]}
