@@ -22,6 +22,7 @@ npm install @seongjinme/react-modal
   isOpen={isOpen}
   title="Title"
   size="medium"
+  width="480px"
   position="center"
   hasCloseButton={true}
   isClosableOnClickBackdrop={true}
@@ -43,10 +44,11 @@ npm install @seongjinme/react-modal
 
 ### 선택 속성
 
-- `size` : 모달의 폭(width) 길이를 `small`, `medium`(기본값), `large`의 3단계로 정합니다. 이 가로폭은 **모달의 위치(`position`)가 화면 정중앙(`center`)으로 지정된 경우에만 적용**됩니다.
+- `size` : 모달의 폭(width) 길이를 `small`, `medium`(기본값), `large`의 3단계로 정합니다. 이 가로폭은 **모달의 위치(`position`)가 화면 정중앙(`center`)으로 지정된 경우에만 적용**되며, 아래의 **`width` 속성이 직접 지정된 경우에는 설정값이 무시**됩니다.
   - `small` : 기본 가로폭이 `320px`로 설정됩니다.
   - `medium` : 기본 가로폭이 `480px`로 설정됩니다.
   - `large` : 기본 가로폭이 `600px`로 설정됩니다.
+- `width` : 모달의 폭(width) 길이를 직접 지정합니다. 위의 `size` 속성과 이 `width` 속성이 함께 설정되었을 경우, `size`는 무시되고 이 속성으로 직접 부여된 길이가 적용됩니다.
 - `position` : 모달의 위치를 `center`(기본값) 또는 `bottom`으로 정합니다.
   - `'center'` : 모달을 화면의 정중앙에 위치시킵니다.
   - `'bottom'` : 모달을 화면 하단에 고정시킵니다. **화면 하단에 고정된 모달은 `size` 속성의 설정값과 무관하게 가로폭이 화면에 꽉 차도록 조정**됩니다.
@@ -69,15 +71,22 @@ npm install @seongjinme/react-modal
   {
     text: 'Primary Button Style',
     style: 'primary',
+    disabled: false,
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => alert('Clicked primary button!'),
   },
   {
     text: 'Secondary Button Style',
     style: 'secondary',
+    disabled: false,
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => alert('Clicked secondary button!'),
   },
 ]
 ```
+
+- `text` : 버튼 안에 포함될 텍스트를 정합니다.
+- `style` : 버튼의 스타일을 정합니다. 배경색이 적용된 기본 스타일(`primary`), 윤곽선만 존재하는 스타일(`secondary`), 윤곽선과 배경색이 모두 제거된 투명 스타일(`transparent`) 중 하나를 선택하실 수 있습니다.
+- `disabled`(선택) : 버튼의 활성화 여부를 `boolean` 타입으로 정합니다. 따로 지정하시지 않을 경우 기본값은 `true`로 고정됩니다.
+- `onClick` : 버튼 클릭시 실행시킬 수 있는 콜백 함수를 정의합니다.
 
 ### 사용 예시
 
@@ -129,6 +138,7 @@ function App() {
 <AlertModal
   isOpen={isOpen}
   size="medium"
+  width="480px"
   title="Title"
   confirmButtonText="확인"
   position="center"
@@ -153,10 +163,11 @@ function App() {
 
 ### 선택 속성
 
-- `size` : 모달의 폭(width) 길이를 `small`, `medium`(기본값), `large`의 3단계로 정합니다. 이 가로폭은 **모달의 위치(`position`)가 화면 정중앙(`center`)으로 지정된 경우에만 적용**됩니다.
+- `size` : 모달의 폭(width) 길이를 `small`, `medium`(기본값), `large`의 3단계로 정합니다. 이 가로폭은 **모달의 위치(`position`)가 화면 정중앙(`center`)으로 지정된 경우에만 적용**되며, 아래의 **`width` 속성이 직접 지정된 경우에는 설정값이 무시**됩니다.
   - `small` : 기본 가로폭이 `320px`로 설정됩니다.
   - `medium` : 기본 가로폭이 `480px`로 설정됩니다.
   - `large` : 기본 가로폭이 `600px`로 설정됩니다.
+- `width` : 모달의 폭(width) 길이를 직접 지정합니다. 위의 `size` 속성과 이 `width` 속성이 함께 설정되었을 경우, `size`는 무시되고 이 속성으로 직접 부여된 길이가 적용됩니다.
 - `confirmButtonText` : "확인" 버튼에 들어갈 텍스트를 설정합니다. 기본값은 `확인`입니다.
 - `position` : 모달의 위치를 `center`(기본값) 또는 `bottom`으로 정합니다.
   - `'center'` : 모달을 화면의 정중앙에 위치시킵니다.
@@ -204,6 +215,7 @@ function App() {
 <ConfirmModal
   isOpen={isOpen}
   size="medium"
+  width="480px"
   title="Title"
   confirmButtonText="확인"
   cancelButtonText="취소"
@@ -231,10 +243,11 @@ function App() {
 
 ### 선택 속성
 
-- `size` : 모달의 폭(width) 길이를 `small`, `medium`(기본값), `large`의 3단계로 정합니다. 이 가로폭은 **모달의 위치(`position`)가 화면 정중앙(`center`)으로 지정된 경우에만 적용**됩니다.
+- `size` : 모달의 폭(width) 길이를 `small`, `medium`(기본값), `large`의 3단계로 정합니다. 이 가로폭은 **모달의 위치(`position`)가 화면 정중앙(`center`)으로 지정된 경우에만 적용**되며, 아래의 **`width` 속성이 직접 지정된 경우에는 설정값이 무시**됩니다.
   - `small` : 기본 가로폭이 `320px`로 설정됩니다.
   - `medium` : 기본 가로폭이 `480px`로 설정됩니다.
   - `large` : 기본 가로폭이 `600px`로 설정됩니다.
+- `width` : 모달의 폭(width) 길이를 직접 지정합니다. 위의 `size` 속성과 이 `width` 속성이 함께 설정되었을 경우, `size`는 무시되고 이 속성으로 직접 부여된 길이가 적용됩니다.
 - `confirmButtonText` : "확인" 버튼에 들어갈 텍스트를 설정합니다. 기본값은 `확인`입니다.
 - `cancelButtonText` : "취소" 버튼에 들어갈 텍스트를 설정합니다. 기본값은 `취소`입니다.
 - `position` : 모달의 위치를 `center`(기본값) 또는 `bottom`으로 정합니다.
@@ -286,6 +299,7 @@ function App() {
 <ConfirmModal
   isOpen={isOpen}
   size="medium"
+  width="480px"
   title="Title"
   inputField={inputField}
   submitButtonText="확인"
@@ -317,10 +331,11 @@ function App() {
 
 ### 선택 속성
 
-- `size` : 모달의 폭(width) 길이를 `small`, `medium`(기본값), `large`의 3단계로 정합니다. 이 가로폭은 **모달의 위치(`position`)가 화면 정중앙(`center`)으로 지정된 경우에만 적용**됩니다.
+- `size` : 모달의 폭(width) 길이를 `small`, `medium`(기본값), `large`의 3단계로 정합니다. 이 가로폭은 **모달의 위치(`position`)가 화면 정중앙(`center`)으로 지정된 경우에만 적용**되며, 아래의 **`width` 속성이 직접 지정된 경우에는 설정값이 무시**됩니다.
   - `small` : 기본 가로폭이 `320px`로 설정됩니다.
   - `medium` : 기본 가로폭이 `480px`로 설정됩니다.
   - `large` : 기본 가로폭이 `600px`로 설정됩니다.
+- `width` : 모달의 폭(width) 길이를 직접 지정합니다. 위의 `size` 속성과 이 `width` 속성이 함께 설정되었을 경우, `size`는 무시되고 이 속성으로 직접 부여된 길이가 적용됩니다.
 - `submitButtonText` : "확인" 버튼에 들어갈 텍스트를 설정합니다. 기본값은 `확인`입니다.
 - `cancelButtonText` : "취소" 버튼에 들어갈 텍스트를 설정합니다. 기본값은 `취소`입니다.
 - `position` : 모달의 위치를 `center`(기본값) 또는 `bottom`으로 정합니다.

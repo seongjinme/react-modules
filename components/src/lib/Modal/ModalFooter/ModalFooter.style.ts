@@ -24,6 +24,8 @@ export const FooterButton = styled.button<{
   font-size: 15px;
   font-weight: 700;
   text-align: center;
+  transition: 0.3s ease;
+  cursor: pointer;
 
   ${(props) => {
     switch (props.$style) {
@@ -51,6 +53,21 @@ export const FooterButton = styled.button<{
           return `background: ${COLORS.grey600};`;
       }
     }};
-    transition: 0.3s ease;
+  }
+
+  &:disabled {
+    ${(props) => {
+      switch (props.$style) {
+        case 'primary':
+          return `background: ${COLORS.grey300}; color: ${COLORS.grey100};`;
+        case 'secondary':
+          return `background: ${COLORS.grey100}; border: 1px solid ${COLORS.grey300}; border-radius: 5px; color: ${COLORS.grey300};`;
+        case 'transparent':
+          return `background: ${COLORS.grey200}; color: ${COLORS.grey300};`;
+        default:
+          return `background: ${COLORS.grey300}; color: ${COLORS.grey100};`;
+      }
+    }};
+    cursor: default;
   }
 `;

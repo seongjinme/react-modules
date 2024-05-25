@@ -16,6 +16,7 @@ export default function ModalFooter({ buttons, buttonsFlexDirection }: ModalFoot
             key={index}
             $style={button.style}
             onClick={button.onClick}
+            disabled={button.disabled ?? false}
             type="button"
           >
             {button.text}
