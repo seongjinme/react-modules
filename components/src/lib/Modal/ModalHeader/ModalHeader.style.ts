@@ -21,4 +21,5 @@ export const CloseButton = styled.button`
   background: ${COLORS.grey100};
   border: 0;
   padding: 0;
+  cursor: pointer;
 `;
