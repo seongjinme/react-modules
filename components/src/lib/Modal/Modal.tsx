@@ -78,7 +78,7 @@ export default function Modal({
   };
 
   return (
-    <Styled.ModalPositioner>
+    <Styled.ModalPositioner $zIndex={zIndex.backdrop}>
       <Styled.ModalBackdrop
         $zIndex={zIndex.backdrop}
         $opacity={backdropOpacity}

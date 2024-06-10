@@ -1,14 +1,37 @@
-import styled from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 
 import { ModalPositionType, ModalSizeType } from '../types/ModalTypes';
 import { COLORS, MODAL_SIZE } from '../constants/styles';
 
-export const ModalPositioner = styled.div`
+export const modalFadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+export const modalWrapperSlideIn = keyframes`
+  from {
+    transform: translateY(15px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+`;
+
+export const ModalPositioner = styled.div<{ $zIndex: number }>`
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   display: flex;
+  z-index: ${(props) => props.$zIndex};
+
+  animation: ${modalFadeIn} 0.4s ease-in-out forwards;
 `;
 
 export const ModalBackdrop = styled.div<{
@@ -43,6 +66,8 @@ export const ModalWrapper = styled.div<{
 
   width: ${(props) => props.$width ?? MODAL_SIZE[props.$size]};
   z-index: ${(props) => props.$zIndex};
+
+  animation: ${modalWrapperSlideIn} 0.4s ease-in-out forwards;
 
   ${(props) => {
     if (props.$position === 'center') {

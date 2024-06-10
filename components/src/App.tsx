@@ -29,7 +29,7 @@ function App() {
     },
     {
       text: '닫기',
-      style: 'transparent',
+      style: 'secondary',
       onClick: () => {
         setIsOpenCenterModal(false);
       },
@@ -76,6 +76,7 @@ function App() {
         <AlertModal
           isOpen={isOpenAlertModal}
           title="아이디를 입력해 주세요."
+          width="382px"
           onClose={() => setIsOpenAlertModal(false)}
           onConfirm={() => setIsOpenAlertModal(false)}
         >
